@@ -11,19 +11,19 @@ function App() {
     let timerId = null;
     if(running){
       timerId = setInterval(() =>{
-        setCounter(counter + 1);
+        setCounter(prevValue => prevValue + 1);
       }, 3000);
     }
 
-    return () => {clearInterval(timerId)};
-  }, [counter, running]);
+    return () => {console.log('clearing'); clearInterval(timerId)};
+  }, [running]);
 
   return (
     <>
     <div className='counter'>{counter}</div>
     <div className='actionPanel'>
-      <button onClick={() => setCounter(0)}>Reset</button>
       <button onClick={() => setRunning(true)}>Start</button>
+      <button onClick={() => setCounter(0)}>Reset</button>
       <button onClick={() => setRunning(false)}>Stop</button>
     </div>
     </>
