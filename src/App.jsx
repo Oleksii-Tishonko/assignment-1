@@ -7,11 +7,11 @@ function App() {
   useEffect(() => {
     console.log('useEffect runs');
     const timerId = setInterval(() =>{
-      setCounter(counter + 1);
+      setCounter((prevValue) => prevValue + 1);
     }, 3000);
 
     return () => {clearInterval(timerId)};
-  }, [counter]);
+  }, []);
 
   return (
     <>
